@@ -36,7 +36,7 @@ public class CarteController {
     }
 
     @GetMapping("/autor/{autor}")
-    public Carte persoanaByEmail(@PathVariable("autor") String autor) {
+    public Carte carteByAutor(@PathVariable("autor") String autor) {
         return carteRepository.findByAutor(autor);
     }
 
@@ -46,7 +46,7 @@ public class CarteController {
     }
 
     @PutMapping("/{id}")
-    public void uodate(@PathVariable("id") Integer id, @RequestBody Carte carte) {
+    public void update(@PathVariable("id") Integer id, @RequestBody Carte carte) {
         carteRepository.update(id, carte);
     }
 

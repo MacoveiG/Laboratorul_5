@@ -1,4 +1,3 @@
-/*
 package com.laboratorul_5.config;
 
 import org.springframework.context.annotation.Bean;
@@ -22,4 +21,3 @@ public class SwaggerConfig {
                 .build();
     }
 }
-*/

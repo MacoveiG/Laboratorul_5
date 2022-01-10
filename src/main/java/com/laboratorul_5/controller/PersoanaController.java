@@ -1,6 +1,7 @@
 package com.laboratorul_5.controller;
 
 import com.laboratorul_5.entity.Persoana;
+import com.laboratorul_5.entity.PersoanaDetaliat;
 import com.laboratorul_5.repository.PersoanaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +36,11 @@ public class PersoanaController {
         return persoanaRepository.findById(id);
     }
 
+    @GetMapping("/detaliat/{id}")
+    public PersoanaDetaliat persoanaDetaliatById(@PathVariable("id") Integer id) {
+        return persoanaRepository.findByIdDetaliat(id);
+    }
+
     @GetMapping("/email/{email}")
     public Persoana persoanaByEmail(@PathVariable("email") String email) {
         return persoanaRepository.findByEmail(email);
@@ -46,7 +52,7 @@ public class PersoanaController {
     }
 
     @PutMapping("/{id}")
-    public void uodate(@PathVariable("id") Integer id, @RequestBody Persoana persoana) {
+    public void update(@PathVariable("id") Integer id, @RequestBody Persoana persoana) {
         persoanaRepository.update(id, persoana);
     }
 

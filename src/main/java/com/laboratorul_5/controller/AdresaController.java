@@ -36,7 +36,7 @@ public class AdresaController {
     }
 
     @GetMapping("/oras/{oras}")
-    public Adresa persoanaByOras(@PathVariable("oras") String oras) {
+    public Adresa adresaByOras(@PathVariable("oras") String oras) {
         return adresaRepository.findByOras(oras);
     }
 
@@ -46,7 +46,7 @@ public class AdresaController {
     }
 
     @PutMapping("/{id}")
-    public void uodate(@PathVariable("id") Integer id, @RequestBody Adresa adresa) {
+    public void update(@PathVariable("id") Integer id, @RequestBody Adresa adresa) {
         adresaRepository.update(id, adresa);
     }
 

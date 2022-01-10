@@ -1,6 +1,7 @@
 package com.laboratorul_5.repository;
 
 import com.laboratorul_5.entity.Persoana;
+import com.laboratorul_5.entity.PersoanaDetaliat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -38,6 +39,26 @@ public class PersoanaRepository {
                             rs.getInt("adresa_id"));
                 });
         return persoana;
+    }
+
+    public PersoanaDetaliat findByIdDetaliat(Integer id) {
+        PersoanaDetaliat persoanaDetaliat = jdbcTemplate.queryForObject(
+                "SELECT * FROM persoana INNER JOIN adresa on persoana.adresa_id = adresa.id WHERE persoana.id = ?",
+                new Object[]{id}, (rs, rowNum) -> {
+                    return new PersoanaDetaliat(
+                            rs.getInt("id"),
+                            rs.getString("first_name"),
+                            rs.getString("last_name"),
+                            rs.getString("email"),
+                            rs.getString("gender").charAt(0),
+                            rs.getInt("adresa_id"),
+                            rs.getString("tara"),
+                            rs.getString("oras"),
+                            rs.getString("strada"),
+                            rs.getInt("nr_casa"),
+                            rs.getInt("nr_apartament"));
+                });
+        return persoanaDetaliat;
     }
 
     public Persoana findByEmail(String email) {
